@@ -1,0 +1,18 @@
+@import '../../styles/mixins';
+
+.watchlist {
+  @extend %page-base-settings;
+
+  &__page--menu {
+    @extend %menu-base-settings;
+  }
+
+  &__page--content {
+    @include base-page-structure;
+
+    &__sorting--bar {
+      margin-bottom: 25px;
+      margin-left: 45px;
+    }
+  }
+}

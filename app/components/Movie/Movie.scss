@@ -1,0 +1,75 @@
+.movie {
+  color: #e2e5ef;
+  margin-bottom: 25px;
+  margin-left: 50px;
+
+  img {
+    cursor: pointer;
+    height: 315px;
+    width: 210px;
+  }
+
+  &__info--group {
+    width: 210px;
+    font-family: Helvetica;
+    font-size: 10px;
+    font-style: normal;
+    font-stretch: normal;
+    font-weight: 700;
+    line-height: 22px;
+    text-align: left;
+    text-transform: none;
+    text-decoration: none;
+    letter-spacing: 0;
+
+    &__title {
+      max-height: 20px;
+      overflow: hidden;
+    }
+
+    &__genres--year {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+  }
+
+  &__rating--group {
+    width: 210px;
+    background-color: #3C4665;
+    border-radius: 2px;
+    color: #e2e5ef;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    font-family: Helvetica;
+    font-size: 10px;
+    font-style: normal;
+    font-stretch: normal;
+    font-weight: 700;
+    justify-content: space-between;
+    letter-spacing: 0;
+    line-height: 22px;
+    text-align: left;
+    text-transform: none;
+    text-decoration: none;
+
+    &__rating {
+      font-size: 15px;
+      margin-left: 10px;
+      margin-top: 3px;
+    }
+
+    &__actions {
+      margin-right: 10px;
+
+      i {
+        font-size: 15px;
+        cursor: pointer;
+        margin-left: 10px;
+        margin-top: 8px;
+      }
+    }
+  }
+}

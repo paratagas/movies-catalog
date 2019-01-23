@@ -1,0 +1,22 @@
+@import '../../styles/mixins';
+
+.home--page {
+  @extend %page-base-settings;
+
+  &__page--menu {
+    @extend %menu-base-settings;
+  }
+
+  &__page--content {
+    @include base-page-structure;
+
+    &__sorting--bar {
+      margin-bottom: 25px;
+      margin-left: 45px;
+
+      button {
+        cursor: pointer;
+      }
+    }
+  }
+}

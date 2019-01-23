@@ -1,0 +1,27 @@
+%page-base-settings {
+  background-color: #2B3247;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: flex-start;
+  padding-top: 50px;
+}
+
+%menu-base-settings {
+  background-color: #3f9087;
+  margin-top: -50px;
+  width: 10%;
+}
+
+@mixin base-page-structure {
+  &__page--title {
+    margin-bottom: 50px;
+  }
+
+  &__movies {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
