@@ -4,6 +4,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Button from '../Button';
+import { WATCH_LIST_URL } from './constants';
 import './Movie.scss';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -26,6 +28,7 @@ class Movie extends Component {
 
   render() {
     const { title, vote, year, imageUrl, mainGenre } = this.props;
+    const isInsideWatchlist = window.location.href.endsWith(WATCH_LIST_URL);
 
     return (
       <section className="movie">
@@ -49,6 +52,13 @@ class Movie extends Component {
             <i className="fa fa-star"> </i>
           </div>
         </div>
+
+        {
+          isInsideWatchlist &&
+          <div className="movie__remove">
+            <Button text="Remove" />
+          </div>
+        }
       </section>
     );
   }

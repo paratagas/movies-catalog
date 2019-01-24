@@ -11,6 +11,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import WatchList from 'containers/WatchList/Loadable';
+import MovieDetails from 'containers/MovieDetails/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import GlobalStyle from '../../global-styles';
@@ -22,6 +23,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/watchlist" component={WatchList} />
+        <Route path="/movie-details" component={MovieDetails} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />

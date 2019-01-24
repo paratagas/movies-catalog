@@ -9,7 +9,7 @@ import MenuBar from '../../components/MenuBar';
 import Movie from '../../components/Movie/index';
 import PageTitle from '../../components/PageTitle/index';
 import Search from '../../components/Search/index';
-import { IMAGE_BASE_URL, GENRES } from '../HomePage/constants';
+import { BASE_API_URL, BASE_IMAGE_URL, GENRES } from '../App/constants';
 import './WatchList.scss';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -24,9 +24,7 @@ export default class WatchList extends Component {
 
   componentDidMount() {
     axios
-      .get(
-        'https://api.themoviedb.org/3/movie/popular?api_key=1ae6bf73ea58a58290edad6afca876a9',
-      )
+      .get(`${BASE_API_URL}/movie/popular?api_key=${process.env.API_KEY}`)
       .then(response => {
         const movies = response.data.results;
         console.log('movies: ', movies);
@@ -54,7 +52,7 @@ export default class WatchList extends Component {
           title={movie.title}
           vote={movie.vote_average}
           year={year}
-          imageUrl={IMAGE_BASE_URL + movie.poster_path}
+          imageUrl={BASE_IMAGE_URL + movie.poster_path}
           mainGenre={mainGenre}
         />
       );

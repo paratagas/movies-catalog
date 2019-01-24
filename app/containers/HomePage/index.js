@@ -10,7 +10,7 @@ import MenuBar from '../../components/MenuBar';
 import Movie from '../../components/Movie';
 import PageTitle from '../../components/PageTitle';
 import Search from '../../components/Search';
-import { IMAGE_BASE_URL, GENRES } from './constants';
+import { BASE_API_URL, BASE_IMAGE_URL, GENRES } from '../App/constants';
 import './HomePage.scss';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -25,16 +25,14 @@ export default class HomePage extends Component {
 
   componentDidMount() {
     axios
-      .get(
-        'https://api.themoviedb.org/3/movie/popular?api_key=1ae6bf73ea58a58290edad6afca876a9',
-      )
+      .get(`${BASE_API_URL}/movie/popular?api_key=${process.env.API_KEY}`)
       .then(response => {
         const movies = response.data.results;
-        console.log('movies: ', movies);
+        // console.log('movies: ', movies);
         this.setState({ movies });
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
       });
   }
 
@@ -58,7 +56,7 @@ export default class HomePage extends Component {
           title={movie.title}
           vote={movie.vote_average}
           year={year}
-          imageUrl={IMAGE_BASE_URL + movie.poster_path}
+          imageUrl={BASE_IMAGE_URL + movie.poster_path}
           mainGenre={mainGenre}
         />
       );

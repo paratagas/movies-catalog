@@ -17,6 +17,9 @@ class MenuBar extends Component {
         <Link to="/watchlist" href="/watchlist">
           <i className="fa fa-3x fa-star"> </i>
         </Link>
+        <Link to="/movie-details" href="/movie-details">
+          <i className="fa fa-3x fa-circle"> </i>
+        </Link>
       </div>
     );
   }

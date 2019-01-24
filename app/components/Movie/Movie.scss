@@ -72,4 +72,16 @@
       }
     }
   }
+
+  &__remove {
+    button {
+      background-color: #3f9087;
+      border-color: #3f9087;
+      color: #2B3247;
+      font-family: Helvetica;
+      font-weight: bold;
+      margin-left: 0;
+      width: 100%;
+    }
+  }
 }
