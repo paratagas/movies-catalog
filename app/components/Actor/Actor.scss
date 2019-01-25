@@ -1,0 +1,23 @@
+.actor {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  img {
+    height: 80%;
+    width: 85%;
+  }
+
+  &__name {
+    font-size: 12px;
+    overflow: hidden;
+    width: 85%;
+  }
+
+  &__character {
+    color: #646464;
+    font-size: 12px;
+    overflow: hidden;
+    width: 85%;
+  }
+}

@@ -11,6 +11,7 @@ import Movie from '../../components/Movie';
 import PageTitle from '../../components/PageTitle';
 import Search from '../../components/Search';
 import { BASE_API_URL, BASE_IMAGE_URL, GENRES } from '../App/constants';
+import { getReleaseYear } from '../../components/Util/dateTime';
 import './HomePage.scss';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -43,9 +44,6 @@ export default class HomePage extends Component {
     const { movies } = this.state;
     const moviesList = movies.map(movie => {
       console.log('movie: ', movie);
-      // movie year
-      const date = new Date(movie.release_date);
-      const year = date.getFullYear();
 
       // movie genre
       const mainGenreId = movie.genre_ids[0];
@@ -55,7 +53,7 @@ export default class HomePage extends Component {
         <Movie
           title={movie.title}
           vote={movie.vote_average}
-          year={year}
+          year={getReleaseYear(movie.release_date)}
           imageUrl={BASE_IMAGE_URL + movie.poster_path}
           mainGenre={mainGenre}
         />

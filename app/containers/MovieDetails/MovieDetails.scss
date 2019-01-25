@@ -1,4 +1,139 @@
-.movie-details {
+.movie--details {
   background-color: #3C4665;
+  color: #e2e5ef;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: flex-start;
+  padding-bottom: 50px;
+  padding-top: 25px;
   width: 75%;
+
+  &__poster {
+    margin-left: 50px;
+    width: 30%;
+
+    &__back--to--list {
+      cursor: pointer;
+
+      span {
+        margin-left: 10px;
+      }
+    }
+
+    img {
+      height: 50%;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    &__actions {
+      margin-top: 20px;
+
+      span {
+        margin-left: 10px;
+      }
+
+      .fa {
+        cursor: pointer;
+      }
+
+      .fa-star {
+        margin-left: 20px;
+      }
+    }
+
+    &__related--movies {
+      &__movies--images {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-top: -20px;
+
+        img:not(:first-child) {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  &__info {
+    margin-left: 50px;
+    width: 60%;
+
+    &__title {
+      span {
+        font-size: 30px;
+        font-weight: bold;
+      }
+    }
+
+    &__main--info {
+      border-bottom: 1px solid #e2e5ef;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      padding-bottom: 20px;
+
+      div:not(:first-child) {
+        margin-left: 10px;
+      }
+
+      &__genres--year--duration--titles {
+        &__genres {
+          margin-left: 10px;
+        }
+      }
+
+      &__genres--year--duration--content {
+        &__genres {
+          margin-left: 10px;
+        }
+      }
+    }
+
+    &__overview {
+      &__text {
+
+      }
+    }
+
+    &__feature--crew {
+      border-bottom: 1px solid #e2e5ef;
+      padding-bottom: 20px;
+
+      &__container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        &__roles {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+        }
+
+        &__names {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          margin-left: 100px;
+        }
+      }
+    }
+
+    &__top--cast {
+      &__cast--actors {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+      }
+    }
+
+    &__backgrounds {
+
+    }
+  }
 }
