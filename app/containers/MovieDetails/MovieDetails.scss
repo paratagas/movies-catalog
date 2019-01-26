@@ -5,9 +5,15 @@
   flex-direction: row;
   height: 100%;
   justify-content: flex-start;
+  left: 25%;
+  /*opacity: 1 !important;*/
+  overflow: scroll;
   padding-bottom: 50px;
   padding-top: 25px;
+  position: fixed;
+  top: 0;
   width: 75%;
+  z-index: 2000;
 
   &__poster {
     margin-left: 50px;

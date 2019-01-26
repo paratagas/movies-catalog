@@ -3,6 +3,7 @@
 */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { BASE_API_URL, BASE_IMAGE_URL } from '../../containers/App/constants';
 import './MovieBackgrounds.scss';
@@ -19,9 +20,13 @@ export default class MovieBackgrounds extends Component {
     this.getMovieBackgrounds = this.getMovieBackgrounds.bind(this);
   }
 
+  static propTypes = {
+    id: PropTypes.number.isRequired,
+  };
+
   componentDidMount() {
     axios
-      .get(`${BASE_API_URL}/movie/424783/images?api_key=${process.env.API_KEY}`)
+      .get(`${BASE_API_URL}/movie/${this.props.id}/images?api_key=${process.env.API_KEY}`)
       .then(response => {
         const movieBackgrounds = response.data;
         this.setState({ movieBackgrounds });

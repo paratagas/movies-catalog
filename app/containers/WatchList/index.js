@@ -49,6 +49,7 @@ export default class WatchList extends Component {
 
       return (
         <Movie
+          id={movie.id}
           title={movie.title}
           vote={movie.vote_average}
           year={year}

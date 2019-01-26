@@ -11,11 +11,13 @@ import './Movie.scss';
 /* eslint-disable react/prefer-stateless-function */
 class Movie extends Component {
   static propTypes = {
+    id: PropTypes.number.isRequired,
     title: PropTypes.string,
     vote: PropTypes.number,
     year: PropTypes.number,
     imageUrl: PropTypes.string,
     mainGenre: PropTypes.string,
+    onClickHandler: PropTypes.func,
   };
 
   static defaultProps = {
@@ -24,15 +26,20 @@ class Movie extends Component {
     year: 0,
     imageUrl: '',
     mainGenre: '',
+    onClickHandler: () => {},
   };
 
   render() {
-    const { title, vote, year, imageUrl, mainGenre } = this.props;
+    const { id, title, vote, year, imageUrl, mainGenre, onClickHandler } = this.props;
     const isInsideWatchlist = window.location.href.endsWith(WATCH_LIST_URL);
 
     return (
       <section className="movie">
-        <img src={imageUrl} alt={title} />
+        <img
+          src={imageUrl}
+          alt={title}
+          onClick={() => onClickHandler(id)}
+        />
 
         <div className="movie__info--group">
           <div className="movie__info--group__title">{title}</div>

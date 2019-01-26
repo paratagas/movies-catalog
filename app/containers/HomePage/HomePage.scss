@@ -3,6 +3,11 @@
 .home--page {
   @extend %page-base-settings;
 
+  &__overlay {
+    height: 100%;
+    position: absolute;
+  }
+
   &__page--menu {
     @extend %menu-base-settings;
   }

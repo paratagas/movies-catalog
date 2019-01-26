@@ -3,11 +3,11 @@
  */
 
 import React, { Component } from 'react';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 import Actor from '../../components/Actor';
 import MovieBackgrounds from '../../components/MovieBackgrounds';
 import RelatedMovies from '../../components/RelatedMovies';
-import { BASE_API_URL, BASE_IMAGE_URL } from '../App/constants';
+import { BASE_IMAGE_URL } from '../App/constants';
 import { getReleaseYear } from '../../components/Util/dateTime';
 import './MovieDetails.scss';
 
@@ -19,6 +19,7 @@ export default class MovieDetails extends Component {
     this.state = {
       movieDetails: null,
       movieCast: null,
+      id: null,
     };
 
     this.getGenres = this.getGenres.bind(this);
@@ -26,26 +27,33 @@ export default class MovieDetails extends Component {
     this.getTopCrew = this.getTopCrew.bind(this);
   }
 
-  componentDidMount() {
-    axios
-      .get(`${BASE_API_URL}/movie/424783?api_key=${process.env.API_KEY}`)
-      .then(response => {
-        const movieDetails = response.data;
-        this.setState({ movieDetails });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  static propTypes = {
+    movieDetails: PropTypes.object.isRequired,
+    movieCast: PropTypes.object.isRequired,
+    id: PropTypes.number.isRequired,
+    onClickHandler: PropTypes.func,
+  };
 
-    axios
-      .get(`${BASE_API_URL}/movie/424783/casts?api_key=${process.env.API_KEY}`)
-      .then(response => {
-        const movieCast = response.data;
-        this.setState({ movieCast });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  static defaultProps = {
+    onClickHandler: () => {},
+  };
+
+  componentDidMount() {
+    this.setState({
+      movieDetails: this.props.movieDetails,
+      movieCast: this.props.movieCast,
+      id: this.props.id,
+      onClickHandler: this.props.onClickHandler,
+    });
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({
+      movieDetails: props.movieDetails,
+      movieCast: props.movieCast,
+      id: props.id,
+      onClickHandler: props.onClickHandler,
+    });
   }
 
   getGenres(genres) {
@@ -91,9 +99,11 @@ export default class MovieDetails extends Component {
   }
 
   render() {
-    const { movieDetails, movieCast } = this.state;
-    console.log('movieDetails: ', movieDetails);
-    console.log('movieCast: ', movieCast);
+    // const { onClickHandler } = this.props;
+    const { movieDetails, movieCast, id, onClickHandler } = this.state;
+    // const { movieDetails, movieCast } = this.state;
+    // console.log('movieDetails: ', movieDetails);
+    // console.log('movieCast: ', movieCast);
     const topCrew = movieCast ? this.getTopCrew(movieCast.crew) : null;
 
     return (
@@ -102,7 +112,10 @@ export default class MovieDetails extends Component {
       (
         <div className="movie--details">
           <section className="movie--details__poster">
-            <div className="movie--details__poster__back--to--list">
+            <div
+              className="movie--details__poster__back--to--list"
+              onClick={onClickHandler}
+            >
               <i className="fa fa-chevron-circle-left"> </i>
               <span>Back to the list</span>
             </div>
@@ -117,7 +130,7 @@ export default class MovieDetails extends Component {
             </div>
             <div className="movie--details__poster__related--movies">
               <p>Related movies</p>
-              <RelatedMovies />
+              <RelatedMovies id={id} />
             </div>
           </section>
           <section className="movie--details__info">
@@ -185,7 +198,7 @@ export default class MovieDetails extends Component {
             </div>
             <div className="movie--details__info__backgrounds">
               <p>Backgrounds</p>
-              <MovieBackgrounds />
+              <MovieBackgrounds id={id} />
             </div>
           </section>
         </div>

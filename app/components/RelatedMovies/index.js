@@ -3,6 +3,7 @@
  */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { BASE_API_URL, BASE_IMAGE_URL } from '../../containers/App/constants';
 import './RelatedMovies.scss';
@@ -19,9 +20,13 @@ export default class RelatedMovies extends Component {
     this.prepareRelatedMovies = this.prepareRelatedMovies.bind(this);
   }
 
+  static propTypes = {
+    id: PropTypes.number.isRequired,
+  };
+
   componentDidMount() {
     axios
-      .get(`${BASE_API_URL}/movie/424783/similar?api_key=${process.env.API_KEY}`)
+      .get(`${BASE_API_URL}/movie/${this.props.id}/similar?api_key=${process.env.API_KEY}`)
       .then(response => {
         const relatedMovies = response.data;
         this.setState({ relatedMovies });
@@ -35,13 +40,19 @@ export default class RelatedMovies extends Component {
     const selectedRelatedMovies = allRelatedMovies.slice(0, 3);
     const topRelatedMovies = selectedRelatedMovies.map((movie, index) => {
       return (
-        <div className="related--movies__movie">
+        <div
+          className="related--movies__movie"
+          key={`related-movie-${index}`}
+        >
           <img
             src={BASE_IMAGE_URL + movie.poster_path}
             alt="movie"
-            key={`related-movie-${index}`}
+            key={`related-movie-img-${index}`}
           />
-          <div className="related--movies__movie__title">
+          <div
+            className="related--movies__movie__title"
+            key={`related-movie-title-${index}`}
+          >
             {movie.title}
           </div>
         </div>
@@ -53,7 +64,7 @@ export default class RelatedMovies extends Component {
 
   render() {
     const { relatedMovies } = this.state;
-    console.log('relatedMovies: ', relatedMovies);
+    // console.log('relatedMovies: ', relatedMovies);
 
     return (
       relatedMovies &&
