@@ -20,6 +20,9 @@ class MenuBar extends Component {
         <Link to="/movie-details" href="/movie-details">
           <i className="fa fa-3x fa-circle"> </i>
         </Link>
+        <a href="mailto:paratagas@gmail.com">
+          <i className="fa fa-3x fa-envelope"> </i>
+        </a>
       </div>
     );
   }
