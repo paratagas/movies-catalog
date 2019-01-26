@@ -44,15 +44,8 @@
     }
 
     &__related--movies {
-      &__movies--images {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        margin-top: -20px;
-
-        img:not(:first-child) {
-          margin-left: 10px;
-        }
+      p {
+        margin-bottom: 0;
       }
     }
   }
@@ -77,6 +70,22 @@
 
       div:not(:first-child) {
         margin-left: 10px;
+      }
+
+      &__play--trailer {
+        background-color: #313541;
+
+        .fa {
+          cursor: pointer;
+          font-size: 30px;
+          margin: 5px 10px -10px 30px;
+        }
+
+        p {
+          margin-top: 10px;
+          padding-left: 2px;
+          padding-right: 2px;
+        }
       }
 
       &__genres--year--duration--titles {
@@ -124,6 +133,9 @@
     }
 
     &__top--cast {
+      border-bottom: 1px solid #e2e5ef;
+      padding-bottom: 20px;
+
       &__cast--actors {
         display: flex;
         flex-direction: row;

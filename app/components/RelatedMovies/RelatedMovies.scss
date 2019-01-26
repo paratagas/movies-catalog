@@ -1,0 +1,18 @@
+.related--movies {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &__movie {
+    height: calc(50% - 10px);
+    margin-bottom: 10px;
+    margin-right: 10px;
+    width: calc(32% - 10px);
+
+    &__title {
+      font-size: 10px;
+      margin-top: 5px;
+    }
+  }
+}

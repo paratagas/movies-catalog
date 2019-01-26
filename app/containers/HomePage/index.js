@@ -39,11 +39,15 @@ export default class HomePage extends Component {
 
   render() {
     const buttonNames = ['Popular', 'Top rated', 'Upcoming', 'Now playing'];
-    const buttonsList = buttonNames.map(text => <Button text={text} />);
+    const buttonsList = buttonNames.map((text, index) => {
+      return (
+        <Button text={text} key={`button-${index}`} />
+      );
+    });
 
     const { movies } = this.state;
-    const moviesList = movies.map(movie => {
-      console.log('movie: ', movie);
+    const moviesList = movies.map((movie, index) => {
+      // console.log('movie: ', movie);
 
       // movie genre
       const mainGenreId = movie.genre_ids[0];
@@ -56,6 +60,7 @@ export default class HomePage extends Component {
           year={getReleaseYear(movie.release_date)}
           imageUrl={BASE_IMAGE_URL + movie.poster_path}
           mainGenre={mainGenre}
+          key={`movie-${index}`}
         />
       );
     });

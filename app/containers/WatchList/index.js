@@ -37,8 +37,8 @@ export default class WatchList extends Component {
 
   render() {
     const { movies } = this.state;
-    const moviesList = movies.map(movie => {
-      console.log('movie: ', movie);
+    const moviesList = movies.map((movie, index) => {
+      // console.log('movie: ', movie);
       // movie year
       const date = new Date(movie.release_date);
       const year = date.getFullYear();
@@ -54,6 +54,7 @@ export default class WatchList extends Component {
           year={year}
           imageUrl={BASE_IMAGE_URL + movie.poster_path}
           mainGenre={mainGenre}
+          key={`movie-${index}`}
         />
       );
     });

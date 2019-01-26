@@ -1,10 +1,12 @@
 /*
- * Watchlist page
+ * Movie details page
  */
 
 import React, { Component } from 'react';
 import axios from 'axios';
 import Actor from '../../components/Actor';
+import MovieBackgrounds from '../../components/MovieBackgrounds';
+import RelatedMovies from '../../components/RelatedMovies';
 import { BASE_API_URL, BASE_IMAGE_URL } from '../App/constants';
 import { getReleaseYear } from '../../components/Util/dateTime';
 import './MovieDetails.scss';
@@ -56,10 +58,11 @@ export default class MovieDetails extends Component {
 
   getTopCast(allCast) {
     const topCast = allCast.slice(0, 5);
-    const topCastActors = topCast.map(actor => {
+    const topCastActors = topCast.map((actor, index) => {
       return (
         <Actor
           actor={actor}
+          key={`actor-${index}`}
         />
       );
     });
@@ -114,11 +117,7 @@ export default class MovieDetails extends Component {
             </div>
             <div className="movie--details__poster__related--movies">
               <p>Related movies</p>
-              <div className="movie--details__poster__related--movies__movies--images">
-                <img src="https://via.placeholder.com/50x50" alt="poster" />
-                <img src="https://via.placeholder.com/50x50" alt="poster" />
-                <img src="https://via.placeholder.com/50x50" alt="poster" />
-              </div>
+              <RelatedMovies />
             </div>
           </section>
           <section className="movie--details__info">
@@ -127,10 +126,12 @@ export default class MovieDetails extends Component {
             </div>
             <div className="movie--details__info__main--info">
               <div className="movie--details__info__main--info__user--score">
-                User score
+                {movieDetails.vote_average * 10}
+                <p>User score</p>
               </div>
               <div className="movie--details__info__main--info__play--trailer">
-                Play trailer
+                <i className="fa fa-play"> </i>
+                <p>Play trailer</p>
               </div>
               <div className="movie--details__info__main--info__genres--year--duration--titles">
                 <div className="movie--details__info__main--info__genres--year--duration--titles__genres">
@@ -184,12 +185,7 @@ export default class MovieDetails extends Component {
             </div>
             <div className="movie--details__info__backgrounds">
               <p>Backgrounds</p>
-              <div className="movie--details__info__backgrounds__images">
-                <img src="https://via.placeholder.com/50x50" alt="poster" />
-                <img src="https://via.placeholder.com/50x50" alt="poster" />
-                <img src="https://via.placeholder.com/50x50" alt="poster" />
-                <img src="https://via.placeholder.com/50x50" alt="poster" />
-              </div>
+              <MovieBackgrounds />
             </div>
           </section>
         </div>
