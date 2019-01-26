@@ -2,14 +2,19 @@
 
 ### Movies catalog for selecting favourites movies
 
-![Movies catalog](https://i.imgur.com/UZeAwnG.png)
+![Home page](https://i.imgur.com/Vjv0dGs.png)
+![Movie details top](https://i.imgur.com/Gi9ihfI.png)
+![Watchlist](https://i.imgur.com/Xi7s5AT.png)
+![Movie details bottom](https://i.imgur.com/C43Srlf.png)
 ---
 
 ### Tech stack
-Movies catalog uses several open source projects to work properly and for tests:
+Movies catalog uses several projects to work properly:
 
+* [Node.js] - JavaScript runtime built on Chrome's V8 JavaScript engine
 * [React] - Javascript library for building user interfaces
 * [Redux] - Predictable state container for JavaScript apps
+* [themoviedb] - The Movie Database API
 
 ---
 
@@ -51,5 +56,7 @@ http://localhost:3000
 
 MIT
 
+ [Node.js]: <https://nodejs.org/>
  [React]: <https://facebook.github.io/react>
  [Redux]: <https://redux.js.org/>
+ [themoviedb]: <https://developers.themoviedb.org/3/>

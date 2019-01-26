@@ -1,7 +1,7 @@
 {
   "name": "movies-catalog",
   "version": "0.0.1",
-  "description": "Movies catalog",
+  "description": "App for exploring movies and create movie lists",
   "repository": {
     "type": "git",
     "url": "git://github.com/paratagas/movies-catalog.git"
@@ -10,7 +10,19 @@
     "npm": ">=5",
     "node": ">=8.10.0"
   },
-  "author": "Evgeni Sviridenko",
+  "author": {
+    "name": "Evgeni Sviridenko",
+    "email": "paratagas@mail.ru",
+    "url": "https://github.com/paratagas"
+  },
+  "tags": [
+    "node.js",
+    "react",
+    "redux",
+    "movies",
+    "movies-catalog",
+    "themoviedb"
+  ],
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
