@@ -17,6 +17,7 @@ class Movie extends Component {
     year: PropTypes.number,
     imageUrl: PropTypes.string,
     mainGenre: PropTypes.string,
+    movie: PropTypes.object,
     onClickHandler: PropTypes.func,
   };
 
@@ -26,11 +27,39 @@ class Movie extends Component {
     year: 0,
     imageUrl: '',
     mainGenre: '',
+    movie: {},
     onClickHandler: () => {},
   };
 
+  constructor(props) {
+    super(props);
+
+    // bindings:
+    this.saveMovieToWatchlist = this.saveMovieToWatchlist.bind(this);
+  }
+
+  saveMovieToWatchlist(movie) {
+    let movies = localStorage.getItem('movies');
+
+    if (!movies) {
+      localStorage.setItem('movies', JSON.stringify([]));
+    }
+
+    movies = localStorage.getItem('movies');
+    movies = JSON.parse(movies);
+
+    const movieExists = movies.some(item => {
+      return movie.id === item.id;
+    });
+
+    if (movieExists) return;
+
+    movies.push(movie);
+    localStorage.setItem('movies', JSON.stringify(movies));
+  }
+
   render() {
-    const { id, title, vote, year, imageUrl, mainGenre, onClickHandler } = this.props;
+    const { id, title, vote, year, imageUrl, mainGenre, movie, onClickHandler } = this.props;
     const isInsideWatchlist = window.location.href.endsWith(WATCH_LIST_URL);
 
     return (
@@ -56,7 +85,11 @@ class Movie extends Component {
           <div className="movie__rating--group__actions">
             <i className="fa fa-heart"> </i>
             <i className="fa fa-bookmark"> </i>
-            <i className="fa fa-star"> </i>
+            <i
+              className="fa fa-star"
+              onClick={() => this.saveMovieToWatchlist(movie)}
+            >
+            </i>
           </div>
         </div>
 

@@ -160,6 +160,7 @@ export default class HomePage extends Component {
           year={getReleaseYear(movie.release_date)}
           imageUrl={BASE_IMAGE_URL + movie.poster_path}
           mainGenre={mainGenre}
+          movie={movie}
           key={`movie-${index}`}
           onClickHandler={this.showMovieDetails}
         />
