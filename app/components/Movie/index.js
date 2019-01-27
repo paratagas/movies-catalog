@@ -4,7 +4,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from '../Button';
+import RemoveButton from '../RemoveButton';
 import { WATCH_LIST_URL } from './constants';
 import './Movie.scss';
 
@@ -36,6 +36,7 @@ class Movie extends Component {
 
     // bindings:
     this.saveMovieToWatchlist = this.saveMovieToWatchlist.bind(this);
+    this.removeFromLocalStorage = this.removeFromLocalStorage.bind(this);
   }
 
   saveMovieToWatchlist(movie) {
@@ -56,6 +57,28 @@ class Movie extends Component {
 
     movies.push(movie);
     localStorage.setItem('movies', JSON.stringify(movies));
+  }
+
+  removeFromLocalStorage(movie) {
+    console.log('in removeFromLocalStorage movie: ', movie);
+    // TODO: set remove functionality
+    /*
+    let movies = localStorage.getItem('movies');
+
+    if (!movies) return;
+
+    movies = JSON.parse(movies);
+
+    const updatedMovies = movies.forEach((item, index, array) => {
+      if (movie.id === item.id) {
+        array.splice(index, 1);
+      }
+      return array
+    });
+
+    localStorage.setItem('movies', JSON.stringify(updatedMovies));
+    */
+    // localStorage.setItem('movies', JSON.stringify(movies));
   }
 
   render() {
@@ -96,7 +119,11 @@ class Movie extends Component {
         {
           isInsideWatchlist &&
           <div className="movie__remove">
-            <Button text="Remove" />
+            <RemoveButton
+              text="Remove"
+              movie={movie}
+              onClickHandler={() => this.removeFromLocalStorage(movie)}
+            />
           </div>
         }
       </section>

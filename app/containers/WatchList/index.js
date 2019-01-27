@@ -9,7 +9,8 @@ import MenuBar from '../../components/MenuBar';
 import Movie from '../../components/Movie/index';
 import PageTitle from '../../components/PageTitle/index';
 import Search from '../../components/Search/index';
-import { BASE_API_URL, BASE_IMAGE_URL, GENRES } from '../App/constants';
+import { BASE_IMAGE_URL, GENRES } from '../App/constants';
+import { getReleaseYear } from '../../components/Util/dateTime';
 import './WatchList.scss';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -22,27 +23,18 @@ export default class WatchList extends Component {
     };
   }
 
-  componentDidMount() {
-    axios
-      .get(`${BASE_API_URL}/movie/popular?api_key=${process.env.API_KEY}`)
-      .then(response => {
-        const movies = response.data.results;
-        console.log('movies: ', movies);
-        this.setState({ movies });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  componentWillMount() {
+    let movies = localStorage.getItem('movies');
+
+    if (movies) {
+      movies = JSON.parse(movies);
+      this.setState({ movies });
+    }
   }
 
   render() {
     const { movies } = this.state;
     const moviesList = movies.map((movie, index) => {
-      // console.log('movie: ', movie);
-      // movie year
-      const date = new Date(movie.release_date);
-      const year = date.getFullYear();
-
       // movie genre
       const mainGenreId = movie.genre_ids[0];
       const mainGenre = GENRES[mainGenreId];
@@ -52,7 +44,7 @@ export default class WatchList extends Component {
           id={movie.id}
           title={movie.title}
           vote={movie.vote_average}
-          year={year}
+          year={getReleaseYear(movie.release_date)}
           imageUrl={BASE_IMAGE_URL + movie.poster_path}
           mainGenre={mainGenre}
           key={`movie-${index}`}
