@@ -44,16 +44,14 @@ export default class HomePage extends Component {
       .get(`${BASE_API_URL}/movie/${FETCH_CRITERIA_DEFAULT}?api_key=${process.env.API_KEY}`)
       .then(response => {
         const movies = response.data.results;
-        // console.log('movies: ', movies);
         this.setState({ movies });
       })
       .catch(error => {
-        // console.log(error);
+        console.log(error);
       });
   }
 
   showMovieDetails(id) {
-    // console.log('in HomePage showMovieDetails id: ', id);
     axios.all([
       axios.get(`${BASE_API_URL}/movie/${id}?api_key=${process.env.API_KEY}`),
       axios.get(`${BASE_API_URL}/movie/${id}/casts?api_key=${process.env.API_KEY}`)
@@ -101,8 +99,6 @@ export default class HomePage extends Component {
       .get(`${BASE_API_URL}/movie/${criteria}?api_key=${process.env.API_KEY}`)
       .then(response => {
         const movies = response.data.results;
-        // console.log('criteria in fetchMoviesByCriteria: ', criteria);
-        // console.log('movies in fetchMoviesByCriteria: ', movies);
         this.setState({ movies, selectedCriteria: criteria });
       })
       .catch(error => {
@@ -112,13 +108,8 @@ export default class HomePage extends Component {
 
   render() {
     const { movies, movieDetails, movieCast, modalWindowVisibility, selectedMovieId } = this.state;
-    // console.log('movieDetails: ', movieDetails);
-    // console.log('movieCast: ', movieCast);
-    // console.log('modalWindowVisibility: ', modalWindowVisibility);
-    // console.log('selectedMovieId: ', selectedMovieId);
-    const moviesList = movies.map((movie, index) => {
-      // console.log('movie: ', movie);
 
+    const moviesList = movies.map((movie, index) => {
       // movie genre
       const mainGenreId = movie.genre_ids[0];
       const mainGenre = GENRES[mainGenreId];
