@@ -15,6 +15,7 @@ import Search from '../../components/Search';
 import MovieDetails from '../MovieDetails';
 import Overlay from '../../components/Overlay';
 import { BASE_API_URL, BASE_IMAGE_URL, GENRES } from '../App/constants';
+import { FETCH_CRITERIA_DEFAULT, PAGE_BUTTONS } from './constants';
 import { getReleaseYear } from '../../components/Util/dateTime';
 import './HomePage.scss';
 
@@ -29,15 +30,18 @@ export default class HomePage extends Component {
       movieCast: null,
       modalWindowVisibility: 'hidden',
       selectedMovieId: null,
+      selectedCriteria: FETCH_CRITERIA_DEFAULT,
     };
 
     this.showMovieDetails = this.showMovieDetails.bind(this);
     this.hideMovieDetails = this.hideMovieDetails.bind(this);
+    this.createPageButtonsList = this.createPageButtonsList.bind(this);
+    this.fetchMoviesByCriteria = this.fetchMoviesByCriteria.bind(this);
   }
 
   componentDidMount() {
     axios
-      .get(`${BASE_API_URL}/movie/popular?api_key=${process.env.API_KEY}`)
+      .get(`${BASE_API_URL}/movie/${FETCH_CRITERIA_DEFAULT}?api_key=${process.env.API_KEY}`)
       .then(response => {
         const movies = response.data.results;
         // console.log('movies: ', movies);
@@ -68,8 +72,6 @@ export default class HomePage extends Component {
   }
 
   hideMovieDetails() {
-    // console.log('in HomePage hideMovieDetails');
-
     this.setState({
       movieDetails: null,
       movieCast: null,
@@ -78,14 +80,37 @@ export default class HomePage extends Component {
     });
   }
 
-  render() {
-    const buttonNames = ['Popular', 'Top rated', 'Upcoming', 'Now playing'];
-    const buttonsList = buttonNames.map((text, index) => {
+  createPageButtonsList() {
+    const buttonsList = PAGE_BUTTONS.map((button, index) => {
       return (
-        <Button text={text} key={`button-${index}`} />
+        <Button
+          text={button.text}
+          buttonCriteria={button.criteria}
+          selectedCriteria={this.state.selectedCriteria}
+          key={`button-${index}`}
+          onClickHandler={this.fetchMoviesByCriteria}
+        />
       );
     });
 
+    return buttonsList;
+  }
+
+  fetchMoviesByCriteria(criteria = FETCH_CRITERIA_DEFAULT) {
+    axios
+      .get(`${BASE_API_URL}/movie/${criteria}?api_key=${process.env.API_KEY}`)
+      .then(response => {
+        const movies = response.data.results;
+        // console.log('criteria in fetchMoviesByCriteria: ', criteria);
+        // console.log('movies in fetchMoviesByCriteria: ', movies);
+        this.setState({ movies, selectedCriteria: criteria });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  render() {
     const { movies, movieDetails, movieCast, modalWindowVisibility, selectedMovieId } = this.state;
     // console.log('movieDetails: ', movieDetails);
     // console.log('movieCast: ', movieCast);
@@ -139,7 +164,7 @@ export default class HomePage extends Component {
             <Search />
           </div>
           <div className="home--page__page--content__sorting--bar">
-            {buttonsList}
+            {this.createPageButtonsList()}
           </div>
           <div className="home--page__page--content__movies">{moviesList}</div>
         </div>

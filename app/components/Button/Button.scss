@@ -11,3 +11,18 @@
     color: #2B3247;
   }
 }
+
+.button--selected {
+  background-color: #3f9087;
+  border: 2px solid #646464;
+  border-radius: 5px;
+  color: #2B3247;
+  font-family: Helvetica;
+  margin: 5px;
+  padding: 5px 30px;
+
+  &:hover {
+    border: 2px solid #e2e5ef;
+    color: #e2e5ef;
+  }
+}
