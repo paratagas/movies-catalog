@@ -5,4 +5,9 @@
   font-family: Helvetica;
   margin: 5px;
   padding: 5px 30px;
+
+  &:hover {
+    background-color: #3f9087;
+    color: #2B3247;
+  }
 }
