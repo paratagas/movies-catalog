@@ -4,10 +4,12 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import Actor from '../../components/Actor';
 import MovieBackgrounds from '../../components/MovieBackgrounds';
 import RelatedMovies from '../../components/RelatedMovies';
-import { BASE_IMAGE_URL } from '../App/constants';
+import UserScore from '../../components/UserScore';
+import { BASE_API_URL, BASE_IMAGE_URL, BASE_YOUTUBE_URL } from '../App/constants';
 import { getReleaseYear } from '../../components/Util/dateTime';
 import './MovieDetails.scss';
 
@@ -25,6 +27,7 @@ export default class MovieDetails extends Component {
     this.getGenres = this.getGenres.bind(this);
     this.getTopCast = this.getTopCast.bind(this);
     this.getTopCrew = this.getTopCrew.bind(this);
+    this.playTrailer = this.playTrailer.bind(this);
   }
 
   static propTypes = {
@@ -98,6 +101,18 @@ export default class MovieDetails extends Component {
     return topCrew;
   }
 
+  playTrailer() {
+    axios
+      .get(`${BASE_API_URL}/movie/${this.state.id}/videos?api_key=${process.env.API_KEY}`)
+      .then(response => {
+        const trailerId = response.data.results[0].key;
+        window.open(`${BASE_YOUTUBE_URL}${trailerId}`);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
     // const { onClickHandler } = this.props;
     const { movieDetails, movieCast, id, onClickHandler } = this.state;
@@ -139,11 +154,15 @@ export default class MovieDetails extends Component {
             </div>
             <div className="movie--details__info__main--info">
               <div className="movie--details__info__main--info__user--score">
-                {movieDetails.vote_average * 10}
+                <UserScore score={movieDetails.vote_average * 10} />
                 <p>User score</p>
               </div>
               <div className="movie--details__info__main--info__play--trailer">
-                <i className="fa fa-play"> </i>
+                <i
+                  className="fa fa-play"
+                  onClick={this.playTrailer}
+                >
+                </i>
                 <p>Play trailer</p>
               </div>
               <div className="movie--details__info__main--info__genres--year--duration--titles">

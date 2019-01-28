@@ -12,6 +12,9 @@
 export const BASE_API_URL = 'https://api.themoviedb.org/3';
 export const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 
+// URL example: https://www.youtube.com/watch?v=fAIX12F6958
+export const BASE_YOUTUBE_URL = 'https://www.youtube.com/watch?v=';
+
 export const GENRES = {
   12: 'Adventure',
   14: 'Fantasy',

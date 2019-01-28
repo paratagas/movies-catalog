@@ -1,5 +1,7 @@
+@import '../../styles/variables';
+
 %button-base-settings {
-  border: 2px solid #646464;
+  border: 2px solid $colour__tertiary__dark;
   border-radius: 5px;
   font-family: Helvetica;
   margin: 5px;
@@ -9,22 +11,22 @@
 .button {
   @extend %button-base-settings;
 
-  color: #e2e5ef;
+  color: $colour__secondary__light;
 
   &:hover {
-    background-color: #3f9087;
-    color: #2B3247;
+    background-color: $colour__secondary__light;
+    color: $colour__primary__dark;
   }
 }
 
 .button--selected {
   @extend %button-base-settings;
 
-  background-color: #3f9087;
-  color: #2B3247;
+  background-color: $colour__secondary__light;
+  color: $colour__primary__dark;
 
   &:hover {
-    border: 2px solid #e2e5ef;
-    color: #e2e5ef;
+    border: 2px solid $colour__secondary__light;
+    color: $colour__primary__dark;
   }
 }

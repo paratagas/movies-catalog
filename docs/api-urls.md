@@ -18,6 +18,9 @@ https://api.themoviedb.org/3/movie/424783?api_key=1ae6bf73ea58a58290edad6afca876
 
 https://api.themoviedb.org/3/movie/424783/images?api_key=1ae6bf73ea58a58290edad6afca876a9
 
+Get trailers:
+http://api.themoviedb.org/3/movie/424783/videos?api_key=1ae6bf73ea58a58290edad6afca876a9
+
 Get similar movies:
 https://api.themoviedb.org/3/movie/424783/similar?api_key=1ae6bf73ea58a58290edad6afca876a9
 

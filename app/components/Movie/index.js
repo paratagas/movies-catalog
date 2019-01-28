@@ -3,8 +3,10 @@
  */
 
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import RemoveButton from '../RemoveButton';
+import WatchList from '../../containers/WatchList';
 import { WATCH_LIST_URL } from './constants';
 import './Movie.scss';
 
@@ -18,6 +20,7 @@ class Movie extends Component {
     imageUrl: PropTypes.string,
     mainGenre: PropTypes.string,
     movie: PropTypes.object,
+    parentUpdater: PropTypes.func,
     onClickHandler: PropTypes.func,
   };
 
@@ -28,6 +31,7 @@ class Movie extends Component {
     imageUrl: '',
     mainGenre: '',
     movie: {},
+    parentUpdater: () => {},
     onClickHandler: () => {},
   };
 
@@ -60,25 +64,24 @@ class Movie extends Component {
   }
 
   removeFromLocalStorage(movie) {
-    console.log('in removeFromLocalStorage movie: ', movie);
-    // TODO: set remove functionality
-    /*
     let movies = localStorage.getItem('movies');
 
     if (!movies) return;
 
     movies = JSON.parse(movies);
 
-    const updatedMovies = movies.forEach((item, index, array) => {
+    movies.forEach((item, index, array) => {
       if (movie.id === item.id) {
         array.splice(index, 1);
       }
-      return array
+      return array;
     });
 
-    localStorage.setItem('movies', JSON.stringify(updatedMovies));
-    */
-    // localStorage.setItem('movies', JSON.stringify(movies));
+    localStorage.setItem('movies', JSON.stringify(movies));
+
+    if (this.props.parentUpdater) {
+      this.props.parentUpdater();
+    }
   }
 
   render() {

@@ -21,9 +21,20 @@ export default class WatchList extends Component {
     this.state = {
       movies: [],
     };
+
+    this.triggerUpdate = this.triggerUpdate.bind(this);
   }
 
   componentWillMount() {
+    let movies = localStorage.getItem('movies');
+
+    if (movies) {
+      movies = JSON.parse(movies);
+      this.setState({ movies });
+    }
+  }
+
+  triggerUpdate() {
     let movies = localStorage.getItem('movies');
 
     if (movies) {
@@ -47,6 +58,8 @@ export default class WatchList extends Component {
           year={getReleaseYear(movie.release_date)}
           imageUrl={BASE_IMAGE_URL + movie.poster_path}
           mainGenre={mainGenre}
+          movie={movie}
+          parentUpdater={this.triggerUpdate}
           key={`movie-${index}`}
         />
       );

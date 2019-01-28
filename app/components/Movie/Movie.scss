@@ -1,5 +1,7 @@
+@import '../../styles/variables';
+
 .movie {
-  color: #e2e5ef;
+  color: $colour__secondary__light;
   margin-bottom: 25px;
   margin-left: 50px;
 
@@ -37,7 +39,7 @@
 
   &__rating--group {
     width: 210px;
-    background-color: #3C4665;
+    background-color: $colour__secondary__dark;
     border-radius: 2px;
     color: #e2e5ef;
     display: flex;
@@ -80,9 +82,9 @@
 
   &__remove {
     button {
-      background-color: #3f9087;
-      border-color: #3f9087;
-      color: #2B3247;
+      background-color: $colour__tertiary__light;
+      border-color: $colour__tertiary__light;
+      color: $colour__primary__dark;
       font-family: Helvetica;
       font-weight: bold;
       margin-left: 0;

@@ -25,8 +25,8 @@ class RemoveButton extends Component {
 
     return (
       <button
-        type="remove--button"
-        onClick={(movie) => onClickHandler(movie)}
+        className="remove--button"
+        onClick={() => onClickHandler(movie)}
       >
         {text}
       </button>

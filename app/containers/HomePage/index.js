@@ -5,9 +5,7 @@
  */
 
 import React, { Component } from 'react';
-// import ReactDOM from "react-dom";
 import axios from 'axios';
-// import autobind from 'autobind-decorator';
 import Button from '../../components/Button';
 import MenuBar from '../../components/MenuBar';
 import Movie from '../../components/Movie';

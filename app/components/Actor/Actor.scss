@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 .actor {
   display: flex;
   flex-direction: column;
@@ -15,7 +17,7 @@
   }
 
   &__character {
-    color: #646464;
+    color: $colour__tertiary__dark;
     font-size: 12px;
     overflow: hidden;
     width: 85%;

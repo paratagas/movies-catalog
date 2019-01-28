@@ -1,12 +1,13 @@
+@import '../../styles/variables';
+
 .movie--details {
-  background-color: #3C4665;
-  color: #e2e5ef;
+  background-color: $colour__secondary__dark;
+  color: $colour__secondary__light;
   display: flex;
   flex-direction: row;
   height: 100%;
   justify-content: flex-start;
   left: 25%;
-  /*opacity: 1 !important;*/
   overflow: scroll;
   padding-bottom: 50px;
   padding-top: 25px;
@@ -16,7 +17,7 @@
   z-index: 2000;
 
   &__poster {
-    margin-left: 50px;
+    margin-left: 80px;
     width: 30%;
 
     &__back--to--list {
@@ -58,6 +59,7 @@
 
   &__info {
     margin-left: 50px;
+    margin-right: 80px;
     width: 60%;
 
     &__title {
@@ -68,7 +70,7 @@
     }
 
     &__main--info {
-      border-bottom: 1px solid #e2e5ef;
+      border-bottom: 1px solid $colour__secondary__light;
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
@@ -78,30 +80,49 @@
         margin-left: 10px;
       }
 
-      &__play--trailer {
-        background-color: #313541;
+      &__user--score {
+        p {
+          margin-top: 5px;
+        }
+      }
 
+      &__play--trailer {
         .fa {
           cursor: pointer;
-          font-size: 30px;
+          font-size: 56px;
           margin: 5px 10px -10px 30px;
         }
 
         p {
-          margin-top: 10px;
-          padding-left: 2px;
+          margin-top: 20px;
+          padding-left: 15px;
           padding-right: 2px;
         }
       }
 
       &__genres--year--duration--titles {
+        font-weight: bold;
+        padding-left: 30px;
+
         &__genres {
+          margin-bottom: 16px;
+          margin-left: 10px;
+        }
+
+        &__year {
+          margin-bottom: 16px;
           margin-left: 10px;
         }
       }
 
       &__genres--year--duration--content {
         &__genres {
+          margin-bottom: 16px;
+          margin-left: 10px;
+        }
+
+        &__year {
+          margin-bottom: 16px;
           margin-left: 10px;
         }
       }
@@ -114,7 +135,7 @@
     }
 
     &__feature--crew {
-      border-bottom: 1px solid #e2e5ef;
+      border-bottom: 1px solid $colour__secondary__light;
       padding-bottom: 20px;
 
       &__container {
@@ -139,7 +160,7 @@
     }
 
     &__top--cast {
-      border-bottom: 1px solid #e2e5ef;
+      border-bottom: 1px solid $colour__secondary__light;
       padding-bottom: 20px;
 
       &__cast--actors {
@@ -148,10 +169,6 @@
         flex-wrap: nowrap;
         justify-content: space-between;
       }
-    }
-
-    &__backgrounds {
-
     }
   }
 }

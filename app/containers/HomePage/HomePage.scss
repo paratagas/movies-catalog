@@ -15,6 +15,8 @@
   &__page--content {
     @include base-page-structure;
 
+    margin-left: 80px;
+
     &__sorting--bar {
       margin-bottom: 25px;
       margin-left: 45px;

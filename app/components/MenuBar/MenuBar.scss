@@ -1,10 +1,13 @@
+@import '../../styles/variables';
+
 .menu--bar {
   margin-top: 100px;
 
   .fa {
-    color: #e2e5ef;
+    color: $colour__lightest;
     cursor: pointer;
-    margin-left: 20px;
+    font-size: 35px;
+    margin-left: 25px;
     margin-top: 30px;
     margin-right: 20px;
 
@@ -19,12 +22,12 @@
 
     @media screen and (max-width: 460px) {
       font-size: 20px;
-      margin-left: 10px;
+      margin-left: 12px;
     }
 
     @media screen and (max-width: 320px) {
       font-size: 15px;
-      margin-left: 10px;
+      margin-left: 5px;
     }
   }
 }

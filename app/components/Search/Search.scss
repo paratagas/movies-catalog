@@ -1,6 +1,8 @@
+@import '../../styles/variables';
+
 .search {
-  border-bottom: 2px solid #646464;
-  color: #646464;
+  border-bottom: 2px solid $colour__tertiary__dark;
+  color: $colour__tertiary__dark;
   font-family: Helvetica;
   font-size: 20px;
   font-style: normal;

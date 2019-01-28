@@ -1,5 +1,7 @@
+@import '../../styles/variables';
+
 .overlay {
-  background-color: grey;
+  background-color: $colour__tertiary__light;
   height: 100%;
   left: 0;
   opacity: 0.7;
