@@ -2,8 +2,8 @@
 
 ### Movies catalog for selecting favourites movies
 
-![Home page](https://i.imgur.com/Vjv0dGs.png)
-![Movie details top](https://i.imgur.com/Gi9ihfI.png)
+![Home page](https://i.imgur.com/HR8IQmA.png)
+![Movie details top](https://i.imgur.com/3YQ87CX.png)
 ![Watchlist](https://i.imgur.com/Xi7s5AT.png)
 ![Movie details bottom](https://i.imgur.com/C43Srlf.png)
 ---
