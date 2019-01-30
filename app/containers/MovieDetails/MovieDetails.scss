@@ -2,7 +2,7 @@
 
 .movie--details {
   background-color: $colour__secondary__dark;
-  color: $colour__secondary__light;
+  color: $colour__secondary__lighter;
   display: flex;
   flex-direction: row;
   height: 100%;
@@ -17,13 +17,24 @@
   z-index: 2000;
 
   &__poster {
-    margin-left: 80px;
+    margin-left: 50px;
     width: 30%;
 
     &__back--to--list {
       cursor: pointer;
 
+      .fa {
+        font-size: 20px;
+        transition: transform .2s;
+
+        &:hover {
+          color: $colour__primary__dark;
+          transform: scale(1.5);
+        }
+      }
+
       span {
+        font-size: 20px;
         margin-left: 10px;
       }
     }
@@ -35,7 +46,8 @@
     }
 
     &__actions {
-      margin-top: 20px;
+      margin-top: 10px;
+      font-size: 20px;
 
       span {
         margin-left: 10px;
@@ -43,14 +55,18 @@
 
       .fa {
         cursor: pointer;
-      }
+        transition: transform .2s;
 
-      .fa-star {
-        margin-left: 20px;
+        &:hover {
+          color: $colour__primary__dark;
+          transform: scale(1.5);
+        }
       }
     }
 
     &__related--movies {
+      margin-top: 30px;
+
       p {
         margin-bottom: 0;
       }
@@ -59,7 +75,6 @@
 
   &__info {
     margin-left: 50px;
-    margin-right: 80px;
     width: 60%;
 
     &__title {
@@ -91,6 +106,12 @@
           cursor: pointer;
           font-size: 56px;
           margin: 5px 10px -10px 30px;
+          transition: transform .2s;
+
+          &:hover {
+            color: $colour__primary__dark;
+            transform: scale(1.4) translateY(3px);
+          }
         }
 
         p {

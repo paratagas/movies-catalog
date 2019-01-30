@@ -2,13 +2,21 @@
 
 .movie {
   color: $colour__secondary__light;
-  margin-bottom: 25px;
+  margin-bottom: 40px;
   margin-left: 50px;
 
   img {
     cursor: pointer;
     height: 315px;
+    transition: .2s;
     width: 210px;
+
+    &:hover {
+      box-shadow: 3px 3px 3px $colour__secondary__dark;
+      margin-left: -2px;
+      margin-top: -2px;
+      margin-bottom: 2px;
+    }
   }
 
   &__info--group {
@@ -41,7 +49,7 @@
     width: 210px;
     background-color: $colour__secondary__dark;
     border-radius: 2px;
-    color: #e2e5ef;
+    color: $colour__secondary__lighter;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -66,16 +74,17 @@
     &__actions {
       margin-right: 10px;
 
-      i {
+      i.fa-heart {
         font-size: 15px;
         cursor: pointer;
         margin-left: 10px;
         margin-top: 8px;
-      }
+        transition: transform .2s;
 
-      /* TODO: remove below, when handlers are set */
-      i.fa-heart, i.fa-bookmark {
-        cursor: auto;
+        &:hover {
+          color: $colour__primary__dark;
+          transform: scale(1.5);
+        }
       }
     }
   }

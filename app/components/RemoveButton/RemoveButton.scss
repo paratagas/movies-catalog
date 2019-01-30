@@ -1,16 +1,24 @@
 @import '../../styles/variables';
 
 .remove--button {
-  border: 2px solid $colour__tertiary__dark;
+  /*background-color: $colour__tertiary__dark !important;*/
+  /*border: 2px solid $colour__secondary__light !important;*/
   border-radius: 5px;
-  color: $colour__secondary__light;
+  /*color: $colour__secondary__light !important;*/
   cursor: pointer;
   font-family: Helvetica;
   margin: 5px;
   padding: 5px 30px;
+  /*transition: .2s;*/
+  border: 2px solid $colour__tertiary__dark !important;
+
+  background-color: $colour__secondary__light !important;
+  color: $colour__primary__dark !important;
+  transition: .3s;
 
   &:hover {
-    background-color: $colour__tertiary__light;
-    color: $colour__primary__dark;
+    border: 2px solid $colour__secondary__light !important;
+    color: $colour__primary__dark !important;
+    /*transform: scale(1.05);*/
   }
 }

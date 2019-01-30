@@ -1,0 +1,32 @@
+@import '../../styles/variables';
+
+.movie--trailer {
+  height: 85%;
+  left: 4%;
+  position: fixed;
+  top: 4%;
+  width: 90%;
+  z-index: 4000;
+
+  &__close--video {
+    color: $colour__lightest;
+    height: 30px;
+    margin-bottom: 20px;
+    text-align: right;
+
+    .fa {
+      cursor: pointer;
+      font-size: 40px;
+      transition: transform .25s;
+
+      &:hover {
+        color: $colour__primary__dark;
+        transform: scale(1.25);
+      }
+    }
+  }
+
+  iframe {
+    box-shadow: 10px 10px 10px $colour__primary__dark;
+  }
+}

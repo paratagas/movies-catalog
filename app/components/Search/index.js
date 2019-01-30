@@ -26,7 +26,7 @@ class Search extends Component {
             <i className="fa fa-search" />
             <input
               type="text"
-              placeholder="Search..."
+              placeholder="Type to filter..."
               onChange={() => onInputHandler(event.target.value)}
             />
           </span>

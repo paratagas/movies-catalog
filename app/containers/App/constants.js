@@ -14,6 +14,8 @@ export const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 
 // URL example: https://www.youtube.com/watch?v=fAIX12F6958
 export const BASE_YOUTUBE_URL = 'https://www.youtube.com/watch?v=';
+// URL example: https://www.youtube.com/embed/tJfDBSWYqU8?controls=1
+export const BASE_YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed/';
 
 export const GENRES = {
   12: 'Adventure',

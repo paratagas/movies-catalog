@@ -1,9 +1,32 @@
 /* Colors: */
-$colour__primary__dark: #2b3247;
-$colour__secondary__dark: #3c4665;
-$colour__tertiary__dark: #646464;
+/*!!!$colour__primary__dark: #021a36;*/ // #003b49 #3b3355 #021a36 - !
+/*$colour__primary__dark: #021a36;*/ // #003b49 #3b3355 #021a36 - !
+/*$colour__secondary__dark: #022b3a;*/
 
-$colour__lightest: #fff;
-$colour__primary__light: #50e3c2;
-$colour__secondary__light: #e2e5ef;
-$colour__tertiary__light: #3f9087;
+/*$colour__lightest: #38aecc;*/
+$colour__lightest: #38aecc;
+/* !!!$colour__primary__light: #022b3a;*/
+/*$colour__primary__light: #e5e059;*/
+/*$colour__primary__light: #28666e;*/
+
+/*$colour__tertiary__light: #022b3a;*/
+ /* 157a6e  */
+
+ /*  */
+
+
+/*$colour__primary__dark: #021a36;*/ /* main bg*/
+$colour__primary__dark: #021a36; /* main bg*/
+$colour__secondary__dark: #114b5f; /*tabs with actions - buttons*/
+$colour__tertiary__dark: #114b5f; /*lines*/
+
+/*$colour__primary__light: #022b3a;*/ /*side bar*/
+$colour__primary__light: #28666e; /*side bar*/
+$colour__secondary__light: #38aecc; /*text*/
+$colour__secondary__lighter: #74eaff; /*text*/
+$colour__tertiary__light: #022b3a; /*side bar*/
+
+:export {
+  colourPrimaryLight: $colour__primary__light;
+  colourSecondaryLighter: $colour__secondary__lighter;
+}

@@ -1,0 +1,11 @@
+@import '../../styles/variables';
+
+.video--overlay {
+  background-color: $colour__secondary__dark;
+  height: 100%;
+  left: -10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 3500;
+}

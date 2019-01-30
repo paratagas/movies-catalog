@@ -109,10 +109,8 @@ class Movie extends Component {
         <div className="movie__rating--group">
           <div className="movie__rating--group__rating">{vote}</div>
           <div className="movie__rating--group__actions">
-            <i className="fa fa-heart"> </i>
-            <i className="fa fa-bookmark"> </i>
             <i
-              className="fa fa-star"
+              className="fa fa-heart"
               onClick={() => this.saveMovieToWatchlist(movie)}
             >
             </i>

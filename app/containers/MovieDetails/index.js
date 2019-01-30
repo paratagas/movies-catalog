@@ -9,6 +9,8 @@ import Actor from '../../components/Actor';
 import MovieBackgrounds from '../../components/MovieBackgrounds';
 import RelatedMovies from '../../components/RelatedMovies';
 import UserScore from '../../components/UserScore';
+import Video from '../../components/Video';
+import VideoOverlay from '../../components/VideoOverlay';
 import { BASE_API_URL, BASE_IMAGE_URL, BASE_YOUTUBE_URL } from '../App/constants';
 import { getReleaseYear } from '../../components/Util/dateTime';
 import './MovieDetails.scss';
@@ -22,12 +24,15 @@ export default class MovieDetails extends Component {
       movieDetails: null,
       movieCast: null,
       id: null,
+      showTrailer: false,
+      trailerId: null,
     };
 
     this.getGenres = this.getGenres.bind(this);
     this.getTopCast = this.getTopCast.bind(this);
     this.getTopCrew = this.getTopCrew.bind(this);
     this.playTrailer = this.playTrailer.bind(this);
+    this.closeVideo = this.closeVideo.bind(this);
   }
 
   static propTypes = {
@@ -106,19 +111,26 @@ export default class MovieDetails extends Component {
       .get(`${BASE_API_URL}/movie/${this.state.id}/videos?api_key=${process.env.API_KEY}`)
       .then(response => {
         const trailerId = response.data.results[0].key;
-        window.open(`${BASE_YOUTUBE_URL}${trailerId}`);
+        this.setState({
+          showTrailer: true,
+          trailerId,
+        });
+        // or to show in separate browser tab:
+        // window.open(`${BASE_YOUTUBE_URL}${trailerId}`);
       })
       .catch(error => {
         console.log(error);
       });
   }
 
+  closeVideo() {
+    this.setState({
+      showTrailer: false,
+    });
+  }
+
   render() {
-    // const { onClickHandler } = this.props;
-    const { movieDetails, movieCast, id, onClickHandler } = this.state;
-    // const { movieDetails, movieCast } = this.state;
-    // console.log('movieDetails: ', movieDetails);
-    // console.log('movieCast: ', movieCast);
+    const { movieDetails, movieCast, id, onClickHandler, showTrailer, trailerId } = this.state;
     const topCrew = movieCast ? this.getTopCrew(movieCast.crew) : null;
 
     return (
@@ -132,16 +144,14 @@ export default class MovieDetails extends Component {
               onClick={onClickHandler}
             >
               <i className="fa fa-chevron-circle-left"> </i>
-              <span>Back to the list</span>
+              <span>Back</span>
             </div>
             <div className="movie--details__poster__poster--image">
               <img src={BASE_IMAGE_URL + movieDetails.poster_path} alt="poster" />
             </div>
             <div className="movie--details__poster__actions">
-              <i className="fa fa-bookmark"> </i>
-              <span>Bookmark</span>
-              <i className="fa fa-star"> </i>
-              <span>Add watchlist</span>
+              <i className="fa fa-heart"> </i>
+              <span>Add to watchlist</span>
             </div>
             <div className="movie--details__poster__related--movies">
               <p>Related movies</p>
@@ -165,6 +175,8 @@ export default class MovieDetails extends Component {
                 </i>
                 <p>Play trailer</p>
               </div>
+              {showTrailer && <VideoOverlay />}
+              {showTrailer && <Video trailerId={trailerId} onCloseHandler={this.closeVideo} />}
               <div className="movie--details__info__main--info__genres--year--duration--titles">
                 <div className="movie--details__info__main--info__genres--year--duration--titles__genres">
                   Genres
@@ -210,7 +222,7 @@ export default class MovieDetails extends Component {
               </div>
             </div>
             <div className="movie--details__info__top--cast">
-              <p>Top billed cast</p>
+              <p>Top cast</p>
               <div className="movie--details__info__top--cast__cast--actors">
                 {this.getTopCast(movieCast.cast)}
               </div>

@@ -10,6 +10,12 @@
     margin-left: 25px;
     margin-top: 30px;
     margin-right: 20px;
+    transition: transform .25s;
+
+    &:hover {
+      color: $colour__secondary__dark;
+      transform: scale(1.4);
+    }
 
     @media screen and (max-width: 768px) {
       font-size: 30px;

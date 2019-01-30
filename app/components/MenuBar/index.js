@@ -12,14 +12,11 @@ class MenuBar extends Component {
     return (
       <div className="menu--bar">
         <Link to="/" href="/">
-          <i className="fa fa-3x fa-bars"> </i>
+          <i className="fa fa-3x fa-list"> </i>
         </Link>
         <Link to="/watchlist" href="/watchlist">
-          <i className="fa fa-3x fa-star"> </i>
+          <i className="fa fa-3x fa-heart"> </i>
         </Link>
-        {/* <Link to="/movie-details" href="/movie-details">
-          <i className="fa fa-3x fa-circle"> </i>
-        </Link> */}
         <a href="mailto:paratagas@gmail.com">
           <i className="fa fa-3x fa-envelope"> </i>
         </a>

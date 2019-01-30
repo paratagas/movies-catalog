@@ -1,9 +1,10 @@
 /*
- * Movie
+ * UserScore
  */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import colors from '../../styles/variables.scss';
 import './UserScore.scss';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -25,13 +26,13 @@ class UserScore extends Component {
         <path
           d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
           fill="none"
-          stroke="#333"
+          stroke={colors.colourPrimaryLight}
           strokeWidth="2"
         />
         <path
           d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
           fill="none"
-          stroke="#fff"
+          stroke={colors.colourSecondaryLighter}
           strokeWidth="2"
           strokeDasharray={strokeDasharray}
         />
@@ -39,7 +40,7 @@ class UserScore extends Component {
           x="45%"
           y="50%"
           textAnchor="middle"
-          stroke="#fff"
+          stroke={colors.colourSecondaryLighter}
           strokeWidth="0.25"
           dy=".3em"
         >
@@ -48,7 +49,7 @@ class UserScore extends Component {
         <text
           x="70%"
           y="35%"
-          stroke="#fff"
+          stroke={colors.colourSecondaryLighter}
           fontSize="5"
           strokeWidth="0.1px"
           dy=".3em"

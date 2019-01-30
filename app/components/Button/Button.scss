@@ -12,10 +12,12 @@
   @extend %button-base-settings;
 
   color: $colour__secondary__light;
+  background-color: $colour__secondary__dark;
+  transition: .2s;
 
   &:hover {
-    background-color: $colour__secondary__light;
-    color: $colour__primary__dark;
+    border: 2px solid $colour__secondary__light;
+    color: $colour__secondary__lighter;
   }
 }
 
@@ -24,6 +26,7 @@
 
   background-color: $colour__secondary__light;
   color: $colour__primary__dark;
+  transition: .3s;
 
   &:hover {
     border: 2px solid $colour__secondary__light;

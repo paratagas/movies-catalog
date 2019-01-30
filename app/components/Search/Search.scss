@@ -1,7 +1,7 @@
 @import '../../styles/variables';
 
 .search {
-  border-bottom: 2px solid $colour__tertiary__dark;
+  /*border-bottom: 2px solid $colour__tertiary__dark;*/
   color: $colour__tertiary__dark;
   font-family: Helvetica;
   font-size: 20px;
@@ -10,9 +10,9 @@
   font-weight: 700;
   line-height: 22px;
   margin-bottom: 30px;
-  margin-left: 50px;
+  margin-left: 30px;
   padding-bottom: 10px;
-  width: 90%;
+  width: 595px;
 
   span {
     margin-left: 20px;
