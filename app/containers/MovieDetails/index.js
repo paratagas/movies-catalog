@@ -13,6 +13,7 @@ import Video from '../../components/Video';
 import VideoOverlay from '../../components/VideoOverlay';
 import { BASE_API_URL, BASE_IMAGE_URL, BASE_YOUTUBE_URL } from '../App/constants';
 import { getReleaseYear } from '../../components/Util/dateTime';
+import { saveMovieToWatchlist } from '../../components/Util/localStorage';
 import './MovieDetails.scss';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -33,6 +34,7 @@ export default class MovieDetails extends Component {
     this.getTopCrew = this.getTopCrew.bind(this);
     this.playTrailer = this.playTrailer.bind(this);
     this.closeVideo = this.closeVideo.bind(this);
+    this.saveMovieToWatchlist = saveMovieToWatchlist.bind(this);
   }
 
   static propTypes = {
@@ -132,6 +134,7 @@ export default class MovieDetails extends Component {
   render() {
     const { movieDetails, movieCast, id, onClickHandler, showTrailer, trailerId } = this.state;
     const topCrew = movieCast ? this.getTopCrew(movieCast.crew) : null;
+    // TODO: set add to watch list from MovieDetails
 
     return (
       movieDetails &&
@@ -150,7 +153,11 @@ export default class MovieDetails extends Component {
               <img src={BASE_IMAGE_URL + movieDetails.poster_path} alt="poster" />
             </div>
             <div className="movie--details__poster__actions">
-              <i className="fa fa-heart"> </i>
+              <i
+                className="fa fa-heart"
+                /*onClick={() => this.saveMovieToWatchlist(movieDetails)}*/
+              >
+              </i>
               <span>Add to watchlist</span>
             </div>
             <div className="movie--details__poster__related--movies">

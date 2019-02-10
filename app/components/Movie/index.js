@@ -3,10 +3,9 @@
  */
 
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import RemoveButton from '../RemoveButton';
-import WatchList from '../../containers/WatchList';
+import { saveMovieToWatchlist } from '../Util/localStorage';
 import { WATCH_LIST_URL } from './constants';
 import './Movie.scss';
 
@@ -39,28 +38,8 @@ class Movie extends Component {
     super(props);
 
     // bindings:
-    this.saveMovieToWatchlist = this.saveMovieToWatchlist.bind(this);
+    this.saveMovieToWatchlist = saveMovieToWatchlist.bind(this);
     this.removeFromLocalStorage = this.removeFromLocalStorage.bind(this);
-  }
-
-  saveMovieToWatchlist(movie) {
-    let movies = localStorage.getItem('movies');
-
-    if (!movies) {
-      localStorage.setItem('movies', JSON.stringify([]));
-    }
-
-    movies = localStorage.getItem('movies');
-    movies = JSON.parse(movies);
-
-    const movieExists = movies.some(item => {
-      return movie.id === item.id;
-    });
-
-    if (movieExists) return;
-
-    movies.push(movie);
-    localStorage.setItem('movies', JSON.stringify(movies));
   }
 
   removeFromLocalStorage(movie) {
