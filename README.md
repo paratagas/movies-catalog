@@ -2,10 +2,12 @@
 
 ### Movies catalog for selecting favourites movies
 
-![Home page](https://i.imgur.com/HR8IQmA.png)
-![Movie details top](https://i.imgur.com/3YQ87CX.png)
-![Watchlist](https://i.imgur.com/Xi7s5AT.png)
-![Movie details bottom](https://i.imgur.com/C43Srlf.png)
+![Home page](https://i.imgur.com/ey8LLax.png)
+![Movie details top](https://i.imgur.com/JkfvccW.png)
+![Watchlist](https://i.imgur.com/9Zc80aW.png)
+![Movie details bottom](https://i.imgur.com/ZY5mqBO.jpg)
+![Movie trailer](https://i.imgur.com/tffYKhn.png)
+
 ---
 
 ### Tech stack
