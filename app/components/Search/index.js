@@ -4,6 +4,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { PLACEHOLDER } from './constants';
 import './Search.scss';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -26,8 +27,10 @@ class Search extends Component {
             <i className="fa fa-search" />
             <input
               type="text"
-              placeholder="Type to filter..."
+              placeholder={PLACEHOLDER}
               onChange={() => onInputHandler(event.target.value)}
+              onFocus={(event) => event.target.placeholder = ''}
+              onBlur={(event) => event.target.placeholder = PLACEHOLDER}
             />
           </span>
         </div>
