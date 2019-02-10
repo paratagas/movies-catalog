@@ -11,6 +11,7 @@ import PageTitle from '../../components/PageTitle/index';
 import Search from '../../components/Search/index';
 import { BASE_IMAGE_URL, GENRES } from '../App/constants';
 import { getReleaseYear } from '../../components/Util/dateTime';
+import { clearInput, filterByInput } from '../../components/Util/DOMOperations';
 import './WatchList.scss';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -20,9 +21,14 @@ export default class WatchList extends Component {
 
     this.state = {
       movies: [],
+      moviesFiltered: [],
+      initialDataLoad: true,
     };
 
     this.triggerUpdate = this.triggerUpdate.bind(this);
+    this.filterByInput = filterByInput.bind(this);
+
+    this.searchInput = React.createRef();
   }
 
   componentWillMount() {
@@ -32,6 +38,10 @@ export default class WatchList extends Component {
       movies = JSON.parse(movies);
       this.setState({ movies });
     }
+  }
+
+  componentWillUnmount() {
+    clearInput(this.searchInput);
   }
 
   triggerUpdate() {
@@ -44,8 +54,9 @@ export default class WatchList extends Component {
   }
 
   render() {
-    const { movies } = this.state;
-    const moviesList = movies.map((movie, index) => {
+    const { movies, moviesFiltered, initialDataLoad } = this.state;
+    const moviesToShow = initialDataLoad ? movies : moviesFiltered;
+    const moviesList = moviesToShow.map((movie, index) => {
       // movie genre
       const mainGenreId = movie.genre_ids[0];
       const mainGenre = GENRES[mainGenreId];
@@ -75,7 +86,10 @@ export default class WatchList extends Component {
             <PageTitle text="My watchlist" />
           </div>
           <div className="watchlist__page--content__search">
-            <Search />
+            <Search
+              ref={this.searchInput}
+              onInputHandler={this.filterByInput}
+            />
           </div>
           <div className="watchlist__page--content__movies">{moviesList}</div>
         </div>

@@ -106,16 +106,19 @@ class Movie extends Component {
           </div>
         </div>
 
-        <div className="movie__rating--group">
-          <div className="movie__rating--group__rating">{vote}</div>
-          <div className="movie__rating--group__actions">
-            <i
-              className="fa fa-heart"
-              onClick={() => this.saveMovieToWatchlist(movie)}
-            >
-            </i>
+        {
+          !isInsideWatchlist &&
+          <div className="movie__rating--group">
+            <div className="movie__rating--group__rating">{vote}</div>
+            <div className="movie__rating--group__actions">
+              <i
+                className="fa fa-heart"
+                onClick={() => this.saveMovieToWatchlist(movie)}
+              >
+              </i>
+            </div>
           </div>
-        </div>
+        }
 
         {
           isInsideWatchlist &&

@@ -4,7 +4,7 @@
 
 ![Home page](https://i.imgur.com/ey8LLax.png)
 ![Movie details top](https://i.imgur.com/JkfvccW.png)
-![Watchlist](https://i.imgur.com/9Zc80aW.png)
+![Watchlist](https://i.imgur.com/C2vBsbk.png)
 ![Movie details bottom](https://i.imgur.com/ZY5mqBO.jpg)
 ![Movie trailer](https://i.imgur.com/tffYKhn.png)
 

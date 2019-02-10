@@ -16,7 +16,7 @@ import Overlay from '../../components/Overlay';
 import { BASE_API_URL, BASE_IMAGE_URL, GENRES } from '../App/constants';
 import { FETCH_CRITERIA_DEFAULT, PAGE_BUTTONS } from './constants';
 import { getReleaseYear } from '../../components/Util/dateTime';
-import { clearInput } from '../../components/Util/DOMOperations';
+import { clearInput, filterByInput } from '../../components/Util/DOMOperations';
 import './HomePage.scss';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -40,7 +40,7 @@ export default class HomePage extends Component {
     this.hideMovieDetails = this.hideMovieDetails.bind(this);
     this.createPageButtonsList = this.createPageButtonsList.bind(this);
     this.fetchMoviesByCriteria = this.fetchMoviesByCriteria.bind(this);
-    this.filterByInput = this.filterByInput.bind(this);
+    this.filterByInput = filterByInput.bind(this);
 
     // refs:
     this.searchInput = React.createRef();
@@ -116,21 +116,6 @@ export default class HomePage extends Component {
       .catch(error => {
         console.log(error);
       });
-  }
-
-  filterByInput(inputValue = '') {
-    const preparedInputValue = inputValue.toLowerCase();
-
-    const { movies } = this.state;
-    let filteredMovies = movies.filter(movie => {
-      const preparedMovieTitle = movie.title.toLowerCase();
-      return preparedMovieTitle.includes(preparedInputValue);
-    });
-
-    this.setState({
-      moviesFiltered: filteredMovies,
-      initialDataLoad: false,
-    });
   }
 
   render() {
