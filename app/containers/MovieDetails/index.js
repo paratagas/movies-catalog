@@ -34,6 +34,7 @@ export default class MovieDetails extends Component {
     this.getTopCrew = this.getTopCrew.bind(this);
     this.playTrailer = this.playTrailer.bind(this);
     this.closeVideo = this.closeVideo.bind(this);
+    this.collectMovieData = this.collectMovieData.bind(this);
     this.saveMovieToWatchlist = saveMovieToWatchlist.bind(this);
   }
 
@@ -131,10 +132,33 @@ export default class MovieDetails extends Component {
     });
   }
 
+  collectMovieData(movieDetails) {
+    const genreIds = movieDetails.genres.map(genre => {
+      return genre.id;
+    });
+
+    return {
+      adult: movieDetails.adult,
+      backdrop_path: movieDetails.backdrop_path,
+      genre_ids: genreIds,
+      id: movieDetails.id,
+      original_language: movieDetails.original_language,
+      original_title: movieDetails.original_title,
+      overview: movieDetails.overview,
+      popularity: movieDetails.popularity,
+      poster_path: movieDetails.poster_path,
+      release_date: movieDetails.release_date,
+      title: movieDetails.title,
+      video: movieDetails.video,
+      vote_average: movieDetails.vote_average,
+      vote_count: movieDetails.vote_count,
+    };
+  }
+
   render() {
     const { movieDetails, movieCast, id, onClickHandler, showTrailer, trailerId } = this.state;
     const topCrew = movieCast ? this.getTopCrew(movieCast.crew) : null;
-    // TODO: set add to watch list from MovieDetails
+    const movie = movieDetails ? this.collectMovieData(movieDetails) : {};
 
     return (
       movieDetails &&
@@ -155,7 +179,7 @@ export default class MovieDetails extends Component {
             <div className="movie--details__poster__actions">
               <i
                 className="fa fa-heart"
-                /*onClick={() => this.saveMovieToWatchlist(movieDetails)}*/
+                onClick={() => this.saveMovieToWatchlist(movie)}
               >
               </i>
               <span>Add to watchlist</span>

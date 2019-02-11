@@ -3,8 +3,6 @@
  */
 
 import React, { Component } from 'react';
-import axios from 'axios';
-// import autobind from 'autobind-decorator';
 import MenuBar from '../../components/MenuBar';
 import Movie from '../../components/Movie/index';
 import PageTitle from '../../components/PageTitle/index';

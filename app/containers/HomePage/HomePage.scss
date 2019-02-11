@@ -1,5 +1,11 @@
 @import '../../styles/mixins';
 
+#spinner {
+  position: fixed;
+  top: 45%;
+  left: 45%;
+}
+
 .home--page {
   @extend %page-base-settings;
 

@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
+import Spinner from "react-svg-spinner";
 import Button from '../../components/Button';
 import MenuBar from '../../components/MenuBar';
 import Movie from '../../components/Movie';
@@ -18,6 +19,7 @@ import { FETCH_CRITERIA_DEFAULT, PAGE_BUTTONS } from './constants';
 import { getReleaseYear } from '../../components/Util/dateTime';
 import { clearInput, filterByInput } from '../../components/Util/DOMOperations';
 import './HomePage.scss';
+import colors from '../../styles/variables.scss';
 
 /* eslint-disable react/prefer-stateless-function */
 export default class HomePage extends Component {
@@ -33,6 +35,7 @@ export default class HomePage extends Component {
       selectedMovieId: null,
       selectedCriteria: FETCH_CRITERIA_DEFAULT,
       initialDataLoad: true,
+      loading: false,
     };
 
     // bindings:
@@ -47,11 +50,12 @@ export default class HomePage extends Component {
   }
 
   componentDidMount() {
+    this.setState({loading: true});
     axios
       .get(`${BASE_API_URL}/movie/${FETCH_CRITERIA_DEFAULT}?api_key=${process.env.API_KEY}`)
       .then(response => {
         const movies = response.data.results;
-        this.setState({ movies });
+        this.setState({ movies, loading: false });
       })
       .catch(error => {
         console.log(error);
@@ -59,6 +63,7 @@ export default class HomePage extends Component {
   }
 
   showMovieDetails(id) {
+    this.setState({loading: true});
     axios.all([
       axios.get(`${BASE_API_URL}/movie/${id}?api_key=${process.env.API_KEY}`),
       axios.get(`${BASE_API_URL}/movie/${id}/casts?api_key=${process.env.API_KEY}`)
@@ -68,10 +73,11 @@ export default class HomePage extends Component {
       const movieCast = movieCastResponse.data;
 
       this.setState({
-        movieDetails: movieDetails,
-        movieCast: movieCast,
+        movieDetails,
+        movieCast,
         modalWindowVisibility: 'visible',
         selectedMovieId: id,
+        loading: false,
       });
     }));
   }
@@ -102,6 +108,7 @@ export default class HomePage extends Component {
   }
 
   fetchMoviesByCriteria(criteria = FETCH_CRITERIA_DEFAULT) {
+    this.setState({loading: true});
     axios
       .get(`${BASE_API_URL}/movie/${criteria}?api_key=${process.env.API_KEY}`)
       .then(response => {
@@ -111,6 +118,7 @@ export default class HomePage extends Component {
           movies,
           selectedCriteria: criteria,
           initialDataLoad: true,
+          loading: false,
         });
       })
       .catch(error => {
@@ -127,6 +135,7 @@ export default class HomePage extends Component {
       modalWindowVisibility,
       selectedMovieId,
       initialDataLoad,
+      loading,
     } = this.state;
 
     const moviesToShow = initialDataLoad ? movies : moviesFiltered;
@@ -182,7 +191,14 @@ export default class HomePage extends Component {
           <div className="home--page__page--content__sorting--bar">
             {this.createPageButtonsList()}
           </div>
-          <div className="home--page__page--content__movies">{moviesList}</div>
+          <div className="home--page__page--content__movies">
+            { loading ?
+              (
+                <Spinner id="spinner" className="spinner" height="128px" width="128px" color={colors.colourLightest} thickness={5} gap={3} speed="slow" />
+              ) :
+              moviesList
+            }
+            </div>
         </div>
       </div>
     );
