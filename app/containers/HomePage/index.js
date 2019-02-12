@@ -7,6 +7,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Spinner from "react-svg-spinner";
+import { FormattedMessage } from 'react-intl';
+import messages from './messages';
 import Button from '../../components/Button';
 import MenuBar from '../../components/MenuBar';
 import Movie from '../../components/Movie';
@@ -180,7 +182,7 @@ export default class HomePage extends Component {
         </div>
         <div className="home--page__page--content">
           <div className="home--page__page--content__page--title">
-            <PageTitle text="All movies" />
+            <PageTitle text={<FormattedMessage {...messages.pageTitle} />} />
           </div>
           <div className="home--page__page--content__search">
             <Search

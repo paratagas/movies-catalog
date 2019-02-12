@@ -6,10 +6,10 @@ import HomePage from '../index';
 import messages from '../messages';
 
 describe('<HomePage />', () => {
-  it('should render the page message', () => {
+  it('should render the page title', () => {
     const renderedComponent = shallow(<HomePage />);
     expect(
-      renderedComponent.contains(<FormattedMessage {...messages.header} />),
+      renderedComponent.contains(<FormattedMessage {...messages.pageTitle} />),
     ).toEqual(true);
   });
 });

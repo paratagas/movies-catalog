@@ -9,16 +9,23 @@
  */
 const addLocaleData = require('react-intl').addLocaleData; //eslint-disable-line
 const enLocaleData = require('react-intl/locale-data/en');
+const ruLocaleData = require('react-intl/locale-data/ru');
+
+// Docs:
+// https://github.com/react-boilerplate/react-boilerplate/blob/master/docs/js/i18n.md
 
 const enTranslationMessages = require('./translations/en.json');
+const ruTranslationMessages = require('./translations/ru.json');
 
 addLocaleData(enLocaleData);
+addLocaleData(ruLocaleData);
 
 const DEFAULT_LOCALE = 'en';
 
 // prettier-ignore
 const appLocales = [
   'en',
+  'ru',
 ];
 
 const formatTranslationMessages = (locale, messages) => {
@@ -38,6 +45,7 @@ const formatTranslationMessages = (locale, messages) => {
 
 const translationMessages = {
   en: formatTranslationMessages('en', enTranslationMessages),
+  ru: formatTranslationMessages('ru', ruTranslationMessages),
 };
 
 exports.appLocales = appLocales;

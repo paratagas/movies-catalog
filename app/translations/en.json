@@ -1,1 +1,4 @@
-[]
+{
+  "app.containers.HomePage.pageTitle": "All movies",
+  "app.containers.NotFoundPage.header": "This is the NotFoundPage container!"
+}
