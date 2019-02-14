@@ -1,0 +1,1 @@
+find . -type f \( -iname \*.js -o -iname \*.jsx -o -iname \*.scss -o -iname \*.md -o -iname \*.json \) ! -path "./build/*" ! -path "./coverage/*" ! -path "./node_modules/*" ! -path "./package-lock.json" ! -path "./lines-count.md" | xargs wc -l > lines-count.md
